@@ -2,7 +2,7 @@
 /**
  * NearbyFacilities Plugin file.
  *
- * @since 0.0.1
+ * @since 0.0.2
  * @license GPL2
  * @package get-latest-releases-archive-url
  */
