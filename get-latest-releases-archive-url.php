@@ -53,5 +53,6 @@ function get_github_release_url( array $atts ) {
 	$res  = wp_remote_get( 'https://api.github.com/repos/' . $atts['author'] . '/' . $atts['repository'] . '/releases/latest' );
 	$res  = json_decode( wp_remote_retrieve_body( $res ), true );
 	$type = $atts['archivetype'] . 'ball_url';
-	echo '<a href="' . esc_html( $res[ $type ] ) . '">' . esc_html( _e( 'Latest version', 'gitLatestReleases' ) ) . '</a>';
+	$str  = __( 'Latest version', 'gitLatestReleases' );
+	echo '<a href="' . esc_html( $res[ $type ] ) . '">' . esc_html( $str ) . '</a>';
 }
