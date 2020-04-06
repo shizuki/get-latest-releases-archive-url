@@ -8,7 +8,7 @@
  */
 
 /**
- * Plugin Name: WP_NearbyFacilities
+ * Plugin Name: get-latest-releases-archive-url
  * Plugin URI: http://shizuki.kinezumi.net/2020/04/06/get-latest-releases-archive-url/
  * Description: Get and display the URL of the zip file of the latest release source code created by the release function of the specified author/repository on github.
  * Version: 0.0.1
