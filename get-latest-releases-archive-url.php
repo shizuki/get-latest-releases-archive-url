@@ -36,7 +36,7 @@
 add_shortcode( 'giturl', 'get_github_release_url' );
 
 function get_github_release_url( array $atts ) {
-	if ( ! $repository || ( ! is_page() && ! is_single() && ! is_singular() && ! is_front_page() && ! is_home() )) {
+	if ( ! is_page() && ! is_single() && ! is_singular() && ! is_front_page() && ! is_home() ) {
 		return;
 	}
 	$def  = array(
@@ -45,9 +45,11 @@ function get_github_release_url( array $atts ) {
 		'archivetype' => 'zip',
 	);
 	$atts = shortcode_atts( $def, $atts );
-	if ( ! $atts['author'] || ! $atts['repository'] || ( 'zip' !== $atts['archivetype'] && 'tar' !== $atts['archivetype'] ) )
+	if ( ! $atts['author'] || ! $atts['repository'] || ( 'zip' !== $atts['archivetype'] && 'tar' !== $atts['archivetype'] ) ) {
+		return;
+	}
 	$res  = wp_remote_get( 'https://api.github.com/repos/' . $atts['author'] . '/' . $atts['repository'] . '/releases/latest' );
 	$res  = json_decode( wp_remote_retrieve_body( $res ), true );
 	$type = $atts['archivetype'] . 'ball_url';
-	echo esc_html( $res[ $type ] );
+	echo '<a href="' . esc_html( $res[ $type ] ) . '">Latest version</a>';
 }
